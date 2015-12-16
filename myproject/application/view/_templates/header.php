@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title><?= isset($titulo) ? $titulo : "MINI" ?></title>
+    <title><?= isset($this->titulo) ? $this->titulo : "MINI" ?></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 

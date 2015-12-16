@@ -3,17 +3,16 @@
 class Canciones extends Controller
 {
     public function index(){
-        $titulo = "Canciones";
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/canciones/index.php';
-        require APP . 'view/_templates/footer.php';
+        $this->view->render("index",
+            array("titulo" => 'Canciones!!!'));
     }
 
     public function listar(){
         $canciones = $this->model->getAllSongs();
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/canciones/listar.php';
-        require APP . 'view/_templates/footer.php';
+        $this->view->render("listar", array(
+            'canciones' => $canciones,
+            'titulo' => 'Listado de Canciones'
+        ));
     }
 
     public function ver($id = 0){
@@ -22,9 +21,10 @@ class Canciones extends Controller
             header("Location: /canciones/listar");
         } else {
             $cancion = $this->model->getSong($id);
-            require APP . 'view/_templates/header.php';
-            require APP . 'view/canciones/ver.php';
-            require APP . 'view/_templates/footer.php';
+            $this->view->render("ver", array(
+                'cancion' => $cancion,
+                'titulo' => 'Canción'
+            ));
         }
     }
 }
